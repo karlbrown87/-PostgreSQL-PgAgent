@@ -1,4 +1,4 @@
-# PostgreSQL with PgAgent
+# PostgreSQL+PgAgent+Docker
 
 This repository is to allow you to run PostgreSQL database together with pgAgent in one container. 
 PgAgent gives you ability to run recurring jobs inside database.
