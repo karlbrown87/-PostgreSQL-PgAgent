@@ -1,8 +1,11 @@
-FROM postgres:12.3
+FROM postgres:12.3 
 
-RUN apt-get update && apt-get -y install pgagent
+RUN apt-get update -y
+RUN apt-get install apt-utils -y
+RUN apt-get install pgagent -y
 
-COPY create_extension.sh /docker-entrypoint-initdb.d
+COPY init.sh /docker-entrypoint-initdb.d
+COPY pgagent.sh /docker-entrypoint-initdb.d
 COPY entrypoint.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/entrypoint.sh \
@@ -10,3 +13,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["postgres"]
+
